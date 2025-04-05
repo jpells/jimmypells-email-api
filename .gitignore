@@ -1,0 +1,20 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+
+# Lambda function build
+email_api/email_api.zip
+
+# Node.js
+node_modules/
+
+# VS Code
+*.code-workspace
+
+# Direnv
+.envrc
+
+# Mac
+.DS_Store
