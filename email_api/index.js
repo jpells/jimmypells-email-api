@@ -1,5 +1,5 @@
-const AWS = require("aws-sdk");
-const ses = new AWS.SES();
+const { SESClient, SendEmailCommand } = require("@aws-sdk/client-ses");
+const ses = new SESClient();
 
 exports.handler = async (event) => {
   try {
@@ -17,7 +17,8 @@ exports.handler = async (event) => {
       Source: process.env.FROM_EMAIL,
     };
 
-    await ses.sendEmail(params).promise();
+    const command = new SendEmailCommand(params);
+    await ses.send(command);
 
     return {
       statusCode: 200,
