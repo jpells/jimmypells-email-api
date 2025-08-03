@@ -27,3 +27,8 @@ variable "allowed_cors_origin" {
   description = "The allowed CORS origin for API Gateway"
   type        = string
 }
+
+variable "recaptcha_secret_key" {
+  description = "The reCAPTCHA secret key for server-side verification"
+  type        = string
+}

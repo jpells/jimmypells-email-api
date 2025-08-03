@@ -6,12 +6,14 @@ A serverless API for sending emails using AWS Lambda, API Gateway, and Simple Em
 
 - AWS Lambda function for sending emails.
 - API Gateway integration.
+- reCAPTCHA validation for spam protection.
 
 ## Prerequisites
 
 - Terraform installed.
 - npm installed.
 - An AWS account with permissions to create Lambda functions and API Gateway resources.
+- Google reCAPTCHA site key and secret key.
 
 ## Setup
 
@@ -29,12 +31,13 @@ curl -X POST https://your-api-id.execute-api.region.amazonaws.com/prod/send \
   -H "Content-Type: application/json; charset=UTF-8" \
   -d '{
     "subject": "Test Email",
-    "message": "Hello, this is a test message!"
+    "message": "Hello, this is a test message!",
+    "recaptchaResponse": "your-recaptcha-response-token"
   }'
 ```
 
-Replace the endpoint URL with the one provided by your API Gateway after deployment.
+Replace the endpoint URL with the one provided by your API Gateway after deployment, and include a valid reCAPTCHA response token obtained from your frontend.
 
-## Warning
+## Security
 
-This API is publicly exposed and could be vulnerable to misuse by bad actors. Ensure you implement proper security measures to protect your resources.
+This API includes reCAPTCHA validation to protect against spam and automated abuse. Ensure you implement the reCAPTCHA client-side integration on your frontend to generate valid response tokens.
