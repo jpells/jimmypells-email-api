@@ -17,7 +17,7 @@ resource "aws_iam_role" "lambda_exec" {
 
 resource "aws_lambda_function" "send_email" {
   function_name    = var.lambda_function_name
-  runtime          = "nodejs18.x"
+  runtime          = "nodejs22.x"
   handler          = "index.handler"
   role             = aws_iam_role.lambda_exec.arn
   filename         = "email_api/email_api.zip"
