@@ -25,9 +25,10 @@ resource "aws_lambda_function" "send_email" {
 
   environment {
     variables = {
-      FROM_EMAIL          = var.from_email
-      TO_EMAIL            = var.to_email
-      ALLOWED_CORS_ORIGIN = var.allowed_cors_origin
+      FROM_EMAIL           = var.from_email
+      TO_EMAIL             = var.to_email
+      ALLOWED_CORS_ORIGIN  = var.allowed_cors_origin
+      RECAPTCHA_SECRET_KEY = var.recaptcha_secret_key
     }
   }
 }
